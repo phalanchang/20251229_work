@@ -1,0 +1,188 @@
+<mxfile host="65bd71144e" modified="2025-01-01T00:00:00.000Z" agent="draw.io" version="22.1.16" etag="seq-10_10_02_act01" type="device">
+    <diagram id="seq-10_10_02_act01" name="ログアウト">
+        <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+
+                <mxCell id="swimlane-user" value="ユーザー" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="100" width="200" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="user-lifeline" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#6c8ebf;" vertex="1" parent="swimlane-user">
+                    <mxGeometry y="40" width="200" height="660" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="swimlane-ui" value="ダッシュボード&#xa;(フロントエンド)" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="100" width="250" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="ui-lifeline" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#82b366;strokeDashArray=2 2;" vertex="1" parent="swimlane-ui">
+                    <mxGeometry y="40" width="250" height="660" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="swimlane-router" value="ルーター" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="650" y="100" width="200" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="router-lifeline" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#d6b656;strokeDashArray=2 2;" vertex="1" parent="swimlane-router">
+                    <mxGeometry y="40" width="200" height="660" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="swimlane-api" value="バックエンドAPI" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+                    <mxGeometry x="900" y="100" width="250" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="api-lifeline" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#d79b00;strokeDashArray=2 2;" vertex="1" parent="swimlane-api">
+                    <mxGeometry y="40" width="250" height="660" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="swimlane-session" value="セッション管理" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="100" width="200" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="session-lifeline" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#9673a6;strokeDashArray=2 2;" vertex="1" parent="swimlane-session">
+                    <mxGeometry y="40" width="200" height="660" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="msg-click" value="ログアウトボタンクリック" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="user-lifeline" target="ui-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="200" y="200"/>
+                            <mxPoint x="475" y="200"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="activation-ui-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;opacity=30;" vertex="1" parent="1">
+                    <mxGeometry x="360" y="180" width="230" height="500" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="opt-confirm" value="ログアウト確認（オプション）" style="shape=umlFrame;whiteSpace=wrap;html=1;width=30;height=30;align=center;verticalAlign=top;spacingLeft=10;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="240" width="210" height="120" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="msg-dialog" value="確認ダイアログ表示" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="ui-lifeline" target="user-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="475" y="280"/>
+                            <mxPoint x="200" y="280"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="msg-confirm" value="確認/キャンセル" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="user-lifeline" target="ui-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="200" y="320"/>
+                            <mxPoint x="475" y="320"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="msg-api-logout" value="POST /api/auth/logout&#xa;(Authorization: Bearer token)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="ui-lifeline" target="api-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="475" y="400"/>
+                            <mxPoint x="1025" y="400"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="activation-api-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;opacity=30;" vertex="1" parent="1">
+                    <mxGeometry x="910" y="380" width="230" height="100" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="note-session" value="セッション無効化" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="920" y="390" width="150" height="40" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="msg-session-invalidate" value="セッション無効化&#xa;(トークン削除)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="api-lifeline" target="session-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="1025" y="450"/>
+                            <mxPoint x="1300" y="450"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="activation-session-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;opacity=30;" vertex="1" parent="1">
+                    <mxGeometry x="1210" y="430" width="180" height="40" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="msg-session-done" value="無効化完了" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;strokeDashArray=5 5;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="session-lifeline" target="api-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="1300" y="480"/>
+                            <mxPoint x="1025" y="480"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="branch-error" value="ネットワークエラー" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="920" y="520" width="120" height="80" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="msg-api-error" value="エラー" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#b85450;strokeDashArray=5 5;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="api-lifeline" target="ui-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="1025" y="600"/>
+                            <mxPoint x="475" y="600"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="note-error" value="エラー時もローカル処理を実行" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="610" width="200" height="40" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="branch-success" value="正常" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="920" y="640" width="120" height="80" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="msg-api-success" value="200 OK&#xa;{success: true, message: &quot;ログアウトしました&quot;}" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;strokeDashArray=5 5;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="api-lifeline" target="ui-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="1025" y="720"/>
+                            <mxPoint x="475" y="720"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="msg-token-delete" value="ローカルのトークン削除&#xa;(localStorage/sessionStorage)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;endArrow=classic;startArrow=classic;" edge="1" parent="1" source="ui-lifeline" target="ui-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="475" y="780"/>
+                            <mxPoint x="550" y="780"/>
+                            <mxPoint x="550" y="800"/>
+                            <mxPoint x="475" y="800"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="msg-redirect" value="ログインページにリダイレクト" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="ui-lifeline" target="router-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="475" y="860"/>
+                            <mxPoint x="750" y="860"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="msg-login-display" value="ログインページ表示" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="router-lifeline" target="user-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="750" y="920"/>
+                            <mxPoint x="200" y="920"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
+

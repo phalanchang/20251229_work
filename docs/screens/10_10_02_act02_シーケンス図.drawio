@@ -1,0 +1,142 @@
+<mxfile host="65bd71144e" modified="2025-01-01T00:00:00.000Z" agent="draw.io" version="22.1.16" etag="seq-10_10_02_act02" type="device">
+    <diagram id="seq-10_10_02_act02" name="保護されたページへの遷移">
+        <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="700" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+
+                <mxCell id="swimlane-user" value="ユーザー" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="100" width="200" height="500" as="geometry"/>
+                </mxCell>
+                <mxCell id="user-lifeline" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#6c8ebf;" vertex="1" parent="swimlane-user">
+                    <mxGeometry y="40" width="200" height="460" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="swimlane-ui" value="ダッシュボード&#xa;(フロントエンド)" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="350" y="100" width="200" height="500" as="geometry"/>
+                </mxCell>
+                <mxCell id="ui-lifeline" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#82b366;strokeDashArray=2 2;" vertex="1" parent="swimlane-ui">
+                    <mxGeometry y="40" width="200" height="460" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="swimlane-router" value="ルーター&#xa;(認証ガード)" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="100" width="250" height="500" as="geometry"/>
+                </mxCell>
+                <mxCell id="router-lifeline" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#d6b656;strokeDashArray=2 2;" vertex="1" parent="swimlane-router">
+                    <mxGeometry y="40" width="250" height="460" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="swimlane-protected" value="保護されたページ&#xa;(フロントエンド)" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+                    <mxGeometry x="900" y="100" width="200" height="500" as="geometry"/>
+                </mxCell>
+                <mxCell id="protected-lifeline" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#d79b00;strokeDashArray=2 2;" vertex="1" parent="swimlane-protected">
+                    <mxGeometry y="40" width="200" height="460" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="msg-click" value="保護されたページへのリンククリック" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="user-lifeline" target="ui-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="200" y="200"/>
+                            <mxPoint x="450" y="200"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="msg-navigate" value="保護されたページのURLに遷移&#xa;(例: /profile)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="ui-lifeline" target="router-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="450" y="260"/>
+                            <mxPoint x="725" y="260"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="activation-router-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;opacity=30;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="240" width="230" height="200" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="note-auth-check" value="認証状態チェック" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="250" width="150" height="40" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="msg-token-check" value="認証トークン確認&#xa;(localStorage/sessionStorage)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;endArrow=classic;startArrow=classic;" edge="1" parent="1" source="router-lifeline" target="router-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="725" y="320"/>
+                            <mxPoint x="800" y="320"/>
+                            <mxPoint x="800" y="340"/>
+                            <mxPoint x="725" y="340"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="branch-token-valid" value="トークン存在・有効" style="rhombus;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="380" width="120" height="80" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="msg-allow" value="ページ表示許可" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="router-lifeline" target="protected-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="725" y="480"/>
+                            <mxPoint x="1000" y="480"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="activation-protected-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;opacity=30;" vertex="1" parent="1">
+                    <mxGeometry x="910" y="460" width="180" height="40" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="msg-display" value="保護されたページ表示" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="protected-lifeline" target="user-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="1000" y="520"/>
+                            <mxPoint x="200" y="520"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="branch-token-invalid" value="トークン不存在・無効" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="500" width="120" height="80" as="geometry"/>
+                </mxCell>
+
+                <mxCell id="msg-save-url" value="元のURLを保持&#xa;(redirectパラメータ)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;endArrow=classic;startArrow=classic;" edge="1" parent="1" source="router-lifeline" target="router-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="725" y="600"/>
+                            <mxPoint x="800" y="600"/>
+                            <mxPoint x="800" y="620"/>
+                            <mxPoint x="725" y="620"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="msg-redirect" value="ログインページにリダイレクト&#xa;(/login?redirect=/profile)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#b85450;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="router-lifeline" target="ui-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="725" y="680"/>
+                            <mxPoint x="450" y="680"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+                <mxCell id="msg-login-display" value="ログインページ表示" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#666666;labelBackgroundColor=#ffffff;fontSize=11;" edge="1" parent="1" source="ui-lifeline" target="user-lifeline">
+                    <mxGeometry x="0" y="0" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="450" y="740"/>
+                            <mxPoint x="200" y="740"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
+

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン・ログアウト機能 実装進捗状況</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+        }
+        h1 {
+            color: #1a202c;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        .subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .progress-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .summary-card {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .summary-card h3 {
+            color: #4a5568;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .summary-card .number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #2d3748;
+        }
+        .summary-card.completed .number {
+            color: #48bb78;
+        }
+        .summary-card.in-progress .number {
+            color: #ed8936;
+        }
+        .summary-card.pending .number {
+            color: #cbd5e0;
+        }
+        .phase {
+            margin-bottom: 40px;
+        }
+        .phase-title {
+            font-size: 24px;
+            color: #2d3748;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .step {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        .step:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .step.completed {
+            border-color: #48bb78;
+            background: #f0fff4;
+        }
+        .step.in-progress {
+            border-color: #ed8936;
+            background: #fffaf0;
+        }
+        .step.pending {
+            border-color: #cbd5e0;
+            background: #f7fafc;
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .step-number {
+            font-size: 18px;
+            font-weight: bold;
+            color: #4a5568;
+        }
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            flex: 1;
+            margin-left: 15px;
+        }
+        .step-status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .step-status.completed {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        .step-status.in-progress {
+            background: #feebc8;
+            color: #7c2d12;
+        }
+        .step-status.pending {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        .step-description {
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+        .current-step {
+            background: #fff5f5;
+            border: 2px solid #fc8181;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(252, 129, 129, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(252, 129, 129, 0);
+            }
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #718096;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ログイン・ログアウト機能 実装進捗状況</h1>
+        <p class="subtitle">最終更新: <span id="lastUpdate"></span></p>
+
+        <div class="progress-summary">
+            <div class="summary-card completed">
+                <h3>完了</h3>
+                <div class="number">11</div>
+            </div>
+            <div class="summary-card in-progress">
+                <h3>実装中</h3>
+                <div class="number">1</div>
+            </div>
+            <div class="summary-card pending">
+                <h3>未着手</h3>
+                <div class="number">1</div>
+            </div>
+        </div>
+
+        <div class="phase">
+            <h2 class="phase-title">フェーズ1: 基盤構築</h2>
+            
+            <div class="step completed">
+                <div class="step-header">
+                    <span class="step-number">1</span>
+                    <span class="step-title">プロジェクト構造の作成</span>
+                    <span class="step-status completed">完了</span>
+                </div>
+                <div class="step-description">
+                    Docker Compose設定、ディレクトリ構成、パッケージ管理ファイル（package.json）を作成しました。
+                </div>
+            </div>
+
+            <div class="step completed">
+                <div class="step-header">
+                    <span class="step-number">2</span>
+                    <span class="step-title">データベース設計とマイグレーション</span>
+                    <span class="step-status completed">完了</span>
+                </div>
+                <div class="step-description">
+                    usersテーブル、sessionsテーブルを作成し、初期データ投入スクリプトを準備しました。
+                </div>
+            </div>
+        </div>
+
+        <div class="phase">
+            <h2 class="phase-title">フェーズ2: バックエンド実装</h2>
+            
+            <div class="step completed">
+                <div class="step-header">
+                    <span class="step-number">3</span>
+                    <span class="step-title">バックエンドAPI基盤の構築</span>
+                    <span class="step-status completed">完了</span>
+                </div>
+                <div class="step-description">
+                    Expressサーバー設定、ルーティング設定、ミドルウェア設定（CORS、JSONパーサー、エラーハンドリング）を実装しました。
+                </div>
+            </div>
+
+            <div class="step completed">
+                <div class="step-header">
+                    <span class="step-number">4</span>
+                    <span class="step-title">認証API実装（POST /api/auth/login）</span>
+                    <span class="step-status completed">完了</span>
+                </div>
+                <div class="step-description">
+                    リクエストバリデーション、ユーザー認証処理、JWTトークン生成、レスポンス返却を実装しました。
+                </div>
+            </div>
+
+            <div class="step completed">
+                <div class="step-header">
+                    <span class="step-number">5</span>
+                    <span class="step-title">認証API実装（POST /api/auth/logout）</span>
+                    <span class="step-status completed">完了</span>
+                </div>
+                <div class="step-description">
+                    認証ミドルウェア作成、ログアウト処理、レスポンス返却を実装しました。
+                </div>
+            </div>
+
+            <div class="step completed">
+                <div class="step-header">
+                    <span class="step-number">6</span>
+                    <span class="step-title">認証状態確認API実装（GET /api/auth/me）</span>
+                    <span class="step-status completed">完了</span>
+                </div>
+                <div class="step-description">
+                    トークン検証、ユーザー情報取得、レスポンス返却を実装しました。
+                </div>
+            </div>
+        </div>
+
+        <div class="phase">
+            <h2 class="phase-title">フェーズ3: フロントエンド実装</h2>
+            
+            <div class="step completed">
+                <div class="step-header">
+                    <span class="step-number">7</span>
+                    <span class="step-title">フロントエンド基盤の構築</span>
+                    <span class="step-status completed">完了</span>
+                </div>
+                <div class="step-description">
+                    Reactプロジェクト設定、ルーティング設定（React Router）、認証コンテキスト（AuthContext）作成、認証ガード（AuthGuard）実装を完了しました。
+                </div>
+            </div>
+
+            <div class="step completed">
+                <div class="step-header">
+                    <span class="step-number">8</span>
+                    <span class="step-title">ログインページ実装（SCR-001）</span>
+                    <span class="step-status completed">完了</span>
+                </div>
+                <div class="step-description">
+                    UIコンポーネント作成、フォームバリデーション、API連携、エラーハンドリングを実装しました。
+                </div>
+            </div>
+
+            <div class="step completed">
+                <div class="step-header">
+                    <span class="step-number">9</span>
+                    <span class="step-title">ダッシュボード実装（SCR-002）</span>
+                    <span class="step-status completed">完了</span>
+                </div>
+                <div class="step-description">
+                    UIコンポーネント作成、ログアウト機能実装、保護されたページへのリンクを実装しました。
+                </div>
+            </div>
+
+            <div class="step completed">
+                <div class="step-header">
+                    <span class="step-number">10</span>
+                    <span class="step-title">保護されたページ実装（SCR-003）</span>
+                    <span class="step-status completed">完了</span>
+                </div>
+                <div class="step-description">
+                    UIコンポーネント作成、認証ガード適用を実装しました。
+                </div>
+            </div>
+
+            <div class="step in-progress current-step">
+                <div class="step-header">
+                    <span class="step-number">11</span>
+                    <span class="step-title">エラーページ実装（SCR-004）</span>
+                    <span class="step-status in-progress">実装中</span>
+                </div>
+                <div class="step-description">
+                    UIコンポーネント作成、エラーハンドリングを実装予定です。
+                </div>
+            </div>
+        </div>
+
+        <div class="phase">
+            <h2 class="phase-title">フェーズ4: 統合・テスト</h2>
+            
+            <div class="step in-progress current-step">
+                <div class="step-header">
+                    <span class="step-number">12</span>
+                    <span class="step-title">統合テストと動作確認</span>
+                    <span class="step-status in-progress">実装中</span>
+                </div>
+                <div class="step-description">
+                    テストチェックリストとテスト手順書を作成しました。エンドツーエンドテスト、各シナリオの動作確認、バグ修正を実施してください。
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>進捗状況は実装の進行に合わせて自動更新されます</p>
+        </div>
+    </div>
+
+    <script>
+        // 最終更新日時を表示
+        document.getElementById('lastUpdate').textContent = new Date().toLocaleString('ja-JP');
+    </script>
+</body>
+</html>
+
