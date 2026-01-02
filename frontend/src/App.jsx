@@ -1,5 +1,6 @@
 // メインアプリケーションコンポーネント
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Toaster } from 'sonner';
 import { AuthProvider } from './contexts/AuthContext';
 import AuthGuard from './components/AuthGuard';
 import PublicRoute from './components/PublicRoute';
@@ -52,6 +53,7 @@ function App() {
           {/* 404: エラーページにリダイレクト */}
           <Route path="*" element={<Navigate to="/error" replace />} />
         </Routes>
+        <Toaster position="top-right" />
       </BrowserRouter>
     </AuthProvider>
   );

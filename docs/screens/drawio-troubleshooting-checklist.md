@@ -123,14 +123,21 @@ draw.ioファイル（`.drawio`）を作成・編集する際に、エラーを�
 ### エラー: "Assertion Failed: Argument is `undefined` or `null`"
 
 1. **mxfile要素の必須属性を確認**
-   - `modified`, `agent`, `version`, `etag`, `type` がすべて存在するか
+   - `host` 属性が存在するか（`modified`, `agent`, `version`, `etag`, `type` は必須ではない）
 
 2. **edge要素のgeometryを確認**
-   - `x="0" y="0"` が設定されているか
+   - `width="50" height="50"` が設定されているか（`x="0" y="0"` は不要）
    - `<mxPoint as="offset" />` が含まれているか
 
-3. **すべての属性に値が設定されているか確認**
+3. **属性の順序を確認**
+   - `vertex`要素: `parent="1" vertex="1"` の順序（`vertex="1" parent="1"` でも動作するが、`parent`を先に記述する方が安全）
+   - `edge`要素: `parent="1" ... edge="1"` の順序（`edge="1" parent="1"` でも動作するが、`parent`を先に記述する方が安全）
+
+4. **すべての属性に値が設定されているか確認**
    - 空の属性や未定義の属性がないか
+
+5. **XMLコメントを削除**
+   - `<!-- コメント -->` 形式のコメントは削除する
 
 ### エラー: "Cannot open file"
 

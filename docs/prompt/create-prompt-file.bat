@@ -33,4 +33,4 @@ echo ファイルを作成しました: %FILENAME%
 echo パス: %FILEPATH%
 echo.
 
-pause
+REM pause

@@ -1,6 +1,7 @@
 // ルート設定
 import express from 'express';
 import authRoutes from './authRoutes.js';
+import todoRoutes from './todoRoutes.js';
 
 const router = express.Router();
 
@@ -15,6 +16,9 @@ router.get('/health', (req, res) => {
 
 // 認証ルート
 router.use('/auth', authRoutes);
+
+// やりたいことルート
+router.use('/todos', todoRoutes);
 
 export default router;
 
